@@ -1,7 +1,7 @@
 {
   "name": "mobrix-backend",
   "version": "1.0.0",
-  "description": "Smart React components for every app, easily customizable for every purpose",
+  "description": "An intuitive Express.js wrapper",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
