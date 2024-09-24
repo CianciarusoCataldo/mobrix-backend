@@ -1,3 +1,7 @@
+node_modules
+dist
+playground/src/mobrix-backend-preview
+build
 # Logs
 logs
 *.log
@@ -128,3 +132,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+stats.html
+.vscode

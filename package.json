@@ -1,0 +1,73 @@
+{
+  "name": "mobrix-backend",
+  "version": "1.0.0",
+  "description": "Smart React components for every app, easily customizable for every purpose",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "config/rollup.build.config.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CianciarusoCataldo/mobrix-backend.git"
+  },
+  "engines": {
+    "node": ">=18.X.0"
+  },
+  "keywords": [],
+  "author": "Cataldo Cianciaruso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CianciarusoCataldo/mobrix-backend/issues"
+  },
+  "homepage": "https://github.com/CianciarusoCataldo/mobrix-backend#readme",
+  "peerDependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/enzyme": "^3.10.12",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^27.0.2",
+    "@types/mocha": "^9.0.0",
+    "babel-jest": "^29.x.x",
+    "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "jest": "29.x.x",
+    "jest-environment-jsdom": "^29.6.1",
+    "jest-transform-stub": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^4.12.0",
+    "rollup-plugin-analyzer": "^4.0.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-visualizer": "^5.5.4",
+    "semver": "^7.6.0",
+    "ts-jest": "^29.x.x",
+    "typescript": ">4.X.X"
+  },
+  "scripts": {
+    "build": "rollup -c ./config/rollup.build.config.js",
+    "build:dev": "rollup -c ./config/rollup.dev.config.js",
+    "analyze": "rollup -c ./config/rollup.analyze.config.js",
+    "watch": "chokidar \"src/**/*.css\" \"src/**/*.tsx\" \"src/**/*.ts\" -c \"npm run build\"",
+    "check-types": "tsc",
+    "typecheck:watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "npm-run-all --parallel \"watch\" \"start:playground\"",
+    "start:playground": "cd playground && npm run start",
+    "generate-docs": "sh docs-gen/utils/generate-docs.sh",
+    "init:playground": "cd playground && npm ci",
+    "analyze:playground": "cd playground && npm run analyze",
+    "build:playground": "cd playground && npm run build"
+  }
+}
