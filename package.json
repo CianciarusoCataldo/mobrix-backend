@@ -1,7 +1,7 @@
 {
   "name": "mobrix-backend",
   "version": "1.0.0",
-  "description": "An intuitive Express.js wrapper",
+  "description": "An intuitive Express.js wrapper, to easily build an expressjs backend with a single configuration file",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
@@ -16,7 +16,14 @@
   "engines": {
     "node": ">=18.X.0"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "expressjs",
+    "express-backend",
+    "express-wrapper",
+    "js",
+    "js backend"
+  ],
   "author": "Cataldo Cianciaruso",
   "license": "MIT",
   "bugs": {
@@ -57,9 +64,8 @@
   },
   "scripts": {
     "build": "rollup -c ./config/rollup.build.config.js",
-    "build:dev": "rollup -c ./config/rollup.dev.config.js",
     "analyze": "rollup -c ./config/rollup.analyze.config.js",
-    "watch": "chokidar \"src/**/*.css\" \"src/**/*.tsx\" \"src/**/*.ts\" -c \"npm run build\"",
+    "watch": "chokidar \"src/**/*.tsx\" \"src/**/*.ts\" -c \"npm run build\"",
     "check-types": "tsc",
     "typecheck:watch": "tsc -w",
     "prestart": "npm run build",

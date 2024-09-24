@@ -7,20 +7,18 @@ const port = process.env.PORT || 3000;
 
 const router = Router()
 
-// middleware that is specific to this router
 const timeLog = (req: any, res: any, next: () => void) => {
   console.log('Time: ', Date.now())
   next()
 }
 router.use(timeLog)
 
-// define the home page route
 router.get('/', (req, res) => {
-  res.send('Birds home page')
+  res.send('router 1 - Main')
 })
-// define the about route
-router.get('/about', (req, res) => {
-  res.send('About birds')
+
+router.get('/router1-r1', (req, res) => {
+  res.send('router 1 - Route 1')
 })
 
 initMbxBackend({
@@ -39,13 +37,13 @@ initMbxBackend({
     {
       path: "/r1",
       callback: (req: Request, res: Response) => {
-        res.send("Route1");
+        res.send("Main path - Route 1");
       },
     },
     {
       path: "/r2",
       callback: (req: Request, res: Response) => {
-        res.send("Route2");
+        res.send("Main path - Route 2");
       },
     },
   ],
