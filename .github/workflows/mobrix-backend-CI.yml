@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 
-jobs:
+jobs: 
   install-dependencies:
     runs-on: ubuntu-latest
     strategy:
@@ -68,5 +68,5 @@ jobs:
       - run: npm run test
       - uses: actions/upload-artifact@v4
         with:
-          name: unit-tests-results-${{ github.event.number || 'main' }}
+          name: unit-tests-results-pr-${{ github.event.number || 'main' }}
           path: coverage
