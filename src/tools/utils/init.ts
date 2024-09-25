@@ -5,7 +5,7 @@ import {
 } from "../../types";
 
 import express from "express";
-import bodyParser from "body-parser";
+import { json } from "body-parser";
 
 const parseConfig = (config: MoBrixBackendConfig) => ({
   get: [],
@@ -17,7 +17,7 @@ const parseConfig = (config: MoBrixBackendConfig) => ({
 
 export const initMbxBackend: MbxBackendInitFunction<Express> = (config) => {
   let app = getMbxBackendApp();
-  app.use(bodyParser.json());
+  app.use(json());
   const { get, post, routers } = parseConfig(config);
 
   get.forEach((element) => {
