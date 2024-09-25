@@ -68,5 +68,5 @@ jobs:
       - run: npm run test
       - uses: actions/upload-artifact@v4
         with:
-          name: unit-tests-results-${{ github.head_ref || github.ref_name }}
+          name: unit-tests-results-${{ github.event.number || 'main' }}
           path: coverage
