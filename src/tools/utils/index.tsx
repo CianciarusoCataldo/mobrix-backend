@@ -1,2 +1,1 @@
-export { initMbxBackend } from "./init";
-
+export * from "./init";

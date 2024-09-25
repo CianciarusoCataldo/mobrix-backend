@@ -1,4 +1,4 @@
-import { Request, Response, Router, initMbxBackend } from "./mobrix-backend-preview";
+import { Request, Response, Router, startMbxBackend } from "./mobrix-backend-preview";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -21,7 +21,7 @@ router.get('/router1-r1', (req, res) => {
   res.send('router 1 - Route 1')
 })
 
-initMbxBackend({
+startMbxBackend({
   port: Number(port),
   onListen: () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);

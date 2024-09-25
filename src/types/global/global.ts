@@ -28,4 +28,8 @@ export type MoBrixBackendConfig = {
   onListen?: () => void;
 };
 
+export type MbxBackendInitFunction<T = void> = (
+  config?: MoBrixBackendConfig
+) => T;
+
 export { Application, NextFunction, Response, Request, Express, Router };
