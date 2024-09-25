@@ -66,3 +66,7 @@ jobs:
           path: node_modules
           key: cache-${{ hashFiles('package-lock.json') }}-v18.X
       - run: npm run test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unit-tests-results-${{ github.ref_name }}
+          path: coverage
