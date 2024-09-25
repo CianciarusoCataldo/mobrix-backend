@@ -1,14 +1,25 @@
-import express from "express";
-import { MoBrixBackendConfig } from "../../types";
+import {
+  MbxBackendInitFunction,
+  Express,
+  MoBrixBackendConfig,
+} from "../../types";
 
-export const initMbxBackend = ({
-  port = 3000,
-  get = [],
-  post = [],
-  routers = [],
-  onListen = () => {},
-}: MoBrixBackendConfig) => {
-  let app = express();
+import express from "express";
+import { json } from "body-parser";
+
+const parseConfig = (config: MoBrixBackendConfig) => ({
+  get: [],
+  post: [],
+  routers: [],
+  port: 3000,
+  ...config,
+});
+
+export const initMbxBackend: MbxBackendInitFunction<Express> = (config) => {
+  let app = getMbxBackendApp();
+  app.use(json());
+  const { get, post, routers } = parseConfig(config);
+
   get.forEach((element) => {
     app.get(element.path, element.callback);
   });
@@ -18,10 +29,23 @@ export const initMbxBackend = ({
   routers.forEach((element) => {
     app.use(element.path, element.router);
   });
+  return app;
+};
+
+/* istanbul ignore next */
+export const startMbxBackend: MbxBackendInitFunction<void> = (config) => {
+  const { port, onListen, ...parsedConfig } = parseConfig(config);
+  let app = initMbxBackend(parsedConfig);
   app.listen(port, onListen);
 };
 
-export const getMbxBackend = ()=>{
+export const getMbxBackendApp = () => {
   const app = express();
   return app;
-}
+};
+
+export {
+  /* istanbul ignore next */ json,
+  /* istanbul ignore next */ static,
+  /* istanbul ignore next */ urlencoded,
+} from "express";

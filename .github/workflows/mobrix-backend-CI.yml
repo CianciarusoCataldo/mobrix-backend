@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 
-jobs:
+jobs: 
   install-dependencies:
     runs-on: ubuntu-latest
     strategy:
@@ -51,3 +51,22 @@ jobs:
           path: node_modules
           key: cache-${{ hashFiles('package-lock.json') }}-v${{ matrix.node-version }}
       - run: npm run build
+  unit-tests:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: node_modules
+          key: cache-${{ hashFiles('package-lock.json') }}-v18.X
+      - run: npm run test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unit-tests-results-pr-${{ github.event.number || 'main' }}
+          path: coverage
