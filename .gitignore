@@ -2,6 +2,7 @@ node_modules
 dist
 playground/src/mobrix-backend-preview
 build
+docs-build
 # Logs
 logs
 *.log

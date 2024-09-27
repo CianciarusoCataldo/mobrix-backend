@@ -1,0 +1,45 @@
+name: Deploy MoBrix-backend playground app
+
+on: workflow_dispatch
+
+jobs:
+  build-mobrix-backend-playground:
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.x
+      - run: | 
+          pip install mkdocs
+          mkdocs build -d docs-build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload GitHub Pages artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: docs-build
+
+  deploy-mobrix-ui-playground:
+    needs: build-mobrix-backend-playground
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
