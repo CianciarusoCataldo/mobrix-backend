@@ -6,6 +6,12 @@
 
 <br>
 
+<p align="center">
+<img alt="" src="https://cianciarusocataldo.github.io/mobrix-backend/assets/mobrix-backend_icon.png" width="300px" />
+</p>
+
+<br>
+
 An intuitive Express.js wrapper, to easily build an expressjs backend with a single configuration file
 
 <br>
