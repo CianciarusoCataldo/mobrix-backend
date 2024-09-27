@@ -72,7 +72,7 @@
     "start": "npm-run-all --parallel \"watch\" \"start:playground\"",
     "test": "jest --config tests/config/jest.config.js",
     "start:playground": "cd playground && npm run start",
-    "generate-docs": "sh docs-gen/utils/generate-docs.sh",
+    "generate-docs": "sh scripts/setup-docs.sh",
     "init:playground": "cd playground && npm ci",
     "analyze:playground": "cd playground && npm run analyze",
     "build:playground": "cd playground && npm run build"

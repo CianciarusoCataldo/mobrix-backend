@@ -17,9 +17,8 @@ jobs:
         with:
           python-version: 3.x
       - run: | 
-          pip install mkdocs
-          pip install mkdocs-material
-          mkdocs build -d docs-build
+          pip install -r pip-deps.txt
+          npm run generate-docs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload GitHub Pages artifact
@@ -28,7 +27,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: docs-build
-
   deploy-mobrix-ui-playground:
     needs: build-mobrix-backend-playground
     permissions:
