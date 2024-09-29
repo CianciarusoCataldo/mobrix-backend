@@ -1,7 +1,6 @@
 import request from "supertest";
 import {
   Express,
-  getMbxBackendApp,
   Response,
   initMbxBackend,
   json,
