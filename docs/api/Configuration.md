@@ -1,4 +1,4 @@
-# MoBrix-backend configuration parameters
+# Configuration parameters
 
 | Parameter                   | Description                                                                                             | Default value |
 | --------------------------- | ------------------------------------------------------------------------------------------------------- | ------------- |

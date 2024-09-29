@@ -1,4 +1,4 @@
-# MoBrix-backend changelog
+# Changelog
 
 ## Versions
 
