@@ -7,28 +7,40 @@ import {
 import express from "express";
 import { json } from "body-parser";
 
-const parseConfig = (config: MoBrixBackendConfig) => ({
+const parseConfig = (config: MoBrixBackendConfig): MoBrixBackendConfig => ({
   get: [],
   post: [],
   routers: [],
   port: 3000,
+  callback: () => {},
+  middlewares: [],
   ...config,
 });
 
 export const initMbxBackend: MbxBackendInitFunction<Express> = (config) => {
   let app = getMbxBackendApp();
+
   app.use(json());
-  const { get, post, routers } = parseConfig(config);
+  const { callback, get, middlewares, post, routers } = parseConfig(config);
+
+  middlewares.forEach((middleware) => {
+    app.use(middleware);
+  });
 
   get.forEach((element) => {
     app.get(element.path, element.callback);
   });
+
   post.forEach((element) => {
     app.post(element.path, element.callback);
   });
+
   routers.forEach((element) => {
     app.use(element.path, element.router);
   });
+
+  callback(app);
+
   return app;
 };
 

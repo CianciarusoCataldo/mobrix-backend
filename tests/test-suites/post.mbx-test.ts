@@ -10,7 +10,6 @@ describe("MoBrix-backend Post request tests", () => {
         {
           path: "/submit",
           callback: (req: Request, res: Response) => {
-            console.log("Request body:", req.body);
             const { name } = req.body;
             if (name) {
               res.status(201).send(`Hello, ${name}`);
