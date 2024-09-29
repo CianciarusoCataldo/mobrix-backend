@@ -7,6 +7,19 @@ import {
 import express from "express";
 import { json } from "body-parser";
 
+/**
+ *
+ * Parse MoBrix-backend config parameters, replacing them with default values if not already set
+ *
+ * @since 1.0.0
+ *
+ * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
+ *
+ * @copyright 2024 Cataldo Cianciaruso
+ *
+ * @see https://cianciarusocataldo.github.io/mobrix-backend
+ *
+ */
 const parseConfig = (config: MoBrixBackendConfig): MoBrixBackendConfig => ({
   get: [],
   post: [],
@@ -17,6 +30,37 @@ const parseConfig = (config: MoBrixBackendConfig): MoBrixBackendConfig => ({
   ...config,
 });
 
+/**
+ *
+ * Get a clean Expressjs app instance
+ *
+ * @since 1.0.0
+ *
+ * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
+ *
+ * @copyright 2024 Cataldo Cianciaruso
+ *
+ * @see https://cianciarusocataldo.github.io/mobrix-backend
+ *
+ */
+const getMbxBackendApp = () => {
+  const app = express();
+  return app;
+};
+
+/**
+ *
+ * Init, configure and return a MoBrix-backend app instance
+ *
+ * @since 1.0.0
+ *
+ * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
+ *
+ * @copyright 2024 Cataldo Cianciaruso
+ *
+ * @see https://cianciarusocataldo.github.io/mobrix-backend
+ *
+ */
 export const initMbxBackend: MbxBackendInitFunction<Express> = (config) => {
   let app = getMbxBackendApp();
 
@@ -44,16 +88,24 @@ export const initMbxBackend: MbxBackendInitFunction<Express> = (config) => {
   return app;
 };
 
+/**
+ *
+ * Init, configure and start a MoBrix-backend app instance
+ *
+ * @since 1.0.0
+ *
+ * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
+ *
+ * @copyright 2024 Cataldo Cianciaruso
+ *
+ * @see https://cianciarusocataldo.github.io/mobrix-backend
+ *
+ */
 /* istanbul ignore next */
 export const startMbxBackend: MbxBackendInitFunction<void> = (config) => {
   const { port, onListen, ...parsedConfig } = parseConfig(config);
   let app = initMbxBackend(parsedConfig);
   app.listen(port, onListen);
-};
-
-export const getMbxBackendApp = () => {
-  const app = express();
-  return app;
 };
 
 export {
