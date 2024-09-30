@@ -74,7 +74,7 @@ Once installed, you can import this library in your project and use it:
 This is a basic example, with just a standard MoBrix-backend init:
 
 ```typescript
-import { Request, Response, Router, startMbxBackend } from "mobrix-backend";
+import { startMbxBackend } from "mobrix-backend";
 
 startMbxBackend();
 ```
