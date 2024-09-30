@@ -21,7 +21,7 @@
 
 <br>
 
-An intuitive Express.js wrapper, to easily build an expressjs backend with a single configuration file
+An intuitive Express.js wrapper, to easily build an expressjs backend with a simplified configuration
 
 <br>
 
@@ -30,6 +30,8 @@ An intuitive Express.js wrapper, to easily build an expressjs backend with a sin
 - [Getting started](#getting-started)
   - [Installation](#installation)
   - [Usage](#usage)
+    - [Basic example](#basic-example)
+    - [Advanced example](#advanced-example)
 - [Configuration parameters](#configuration-parameters)
 - [Tests](#tests)
 - [Authors](#authors)
@@ -66,6 +68,26 @@ npm i mobrix-backend
 ### Usage
 
 Once installed, you can import this library in your project and use it:
+
+#### Basic example
+
+This is a basic example, with just a standard MoBrix-backend init:
+
+```typescript
+import { Request, Response, Router, startMbxBackend } from "mobrix-backend";
+
+startMbxBackend();
+```
+
+We can see the default page by navigating to `localhost:3000`:
+
+<p align="center">
+<img alt="" src="https://cianciarusocataldo.github.io/mobrix-backend/assets/imgs/basic-example-page.png" width="500px" />
+</p>
+
+#### Advanced example
+
+This example inits and starts a MoBrix-backend instance using the configuration parameters. It will listens at port 3000, with 3 GET handlers, a custom callback and a router:
 
 ```typescript
 import { Request, Response, Router, startMbxBackend } from "mobrix-backend";
@@ -121,8 +143,6 @@ startMbxBackend({
   ],
 });
 ```
-
-This simple example inits and starts a MoBrix-backend instance that will listens at port 3000, with 3 GET handlers, a custom callback and a router.
 
 <br>
 

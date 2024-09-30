@@ -1,23 +1,23 @@
 import typescript from "rollup-plugin-typescript2";
 import del from "rollup-plugin-delete";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs"; // Aggiunto per la compatibilità con CommonJS
-import copy from "rollup-plugin-copy"; // Aggiunto per copiare la libreria
-import dotenv from "dotenv"; // Aggiunto per caricare le variabili d'ambiente
-import json from "@rollup/plugin-json"; // Importa il plugin JSON
-import pkg from './package.json' assert { type: 'json' };
+import commonjs from "@rollup/plugin-commonjs";
+import copy from "rollup-plugin-copy";
+import dotenv from "dotenv";
+import json from "@rollup/plugin-json";
+import pkg from "./package.json" assert { type: "json" };
 
-dotenv.config(); // Carica le variabili d'ambiente dal file .env
+dotenv.config();
 
 export default {
-  input: "src/index.ts", // Punto di ingresso della tua app
+  input: "src/index.ts",
   output: [
     {
-      file: "dist/index.cjs", // Uscita in formato CommonJS
+      file: "dist/index.cjs",
       format: "cjs",
     },
     {
-      file: "dist/index.mjs", // Uscita in formato ESModule
+      file: "dist/index.mjs",
       format: "esm",
     },
   ],
@@ -39,5 +39,5 @@ export default {
       ],
     }),
   ],
-  external: Object.keys(pkg.peerDependencies || []), // Esclude le dipendenze specificate in peerDependencies
+  external: Object.keys(pkg.peerDependencies || []),
 };

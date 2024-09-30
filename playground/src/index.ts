@@ -26,33 +26,35 @@ router.get("/router1-r1", (req, res) => {
   res.send("router 1 - Route 1");
 });
 
-startMbxBackend({
-  callback: (app) => {
-    app.use("/router1", router);
-  },
-  port: Number(port),
-  onListen: () => {
-    console.log(`[server]: Server is running at http://localhost:${port}`);
-  },
-  //routers: [{ path: "/router1", router }],
-  get: [
-    {
-      path: "/",
-      callback: (req: Request, res: Response) => {
-        res.send("Express + TypeScript Server");
-      },
-    },
-    {
-      path: "/r1",
-      callback: (req: Request, res: Response) => {
-        res.send("Main path - Route 1");
-      },
-    },
-    {
-      path: "/r2",
-      callback: (req: Request, res: Response) => {
-        res.send("Main path - Route 2");
-      },
-    },
-  ],
-});
+// startMbxBackend({
+//   callback: (app) => {
+//     app.use("/router1", router);
+//   },
+//   port: Number(port),
+//   onListen: () => {
+//     console.log(`[server]: Server is running at http://localhost:${port}`);
+//   },
+//   //routers: [{ path: "/router1", router }],
+//   get: [
+//     {
+//       path: "/",
+//       callback: (req: Request, res: Response) => {
+//         res.send("Express + TypeScript Server");
+//       },
+//     },
+//     {
+//       path: "/r1",
+//       callback: (req: Request, res: Response) => {
+//         res.send("Main path - Route 1");
+//       },
+//     },
+//     {
+//       path: "/r2",
+//       callback: (req: Request, res: Response) => {
+//         res.send("Main path - Route 2");
+//       },
+//     },
+//   ],
+// });
+
+startMbxBackend()

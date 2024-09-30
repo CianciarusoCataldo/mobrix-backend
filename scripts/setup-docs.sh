@@ -13,3 +13,6 @@ cp LICENSE docs/License.md
 cp config/mkdocs.yml mkdocs.yml
 mkdocs build -d docs-build
 rm -rf mkdocs.yml
+rm -rf docs/index.md
+rm -rf docs/CHANGELOG.md
+rm -rf docs/LICENSE
