@@ -43,14 +43,9 @@ startMbxBackend({
   ],
   post: [
     {
-      path: "/submit",
+      path: "/",
       callback: (req: Request, res: Response) => {
-        const { name } = req.body;
-        if (name) {
-          res.status(201).send(`Hello, ${name}`);
-        } else {
-          res.status(400).send("Name is required");
-        }
+        res.send("MoBrix-backend Server - Example Post handler - Response");
       },
     },
   ],

@@ -146,6 +146,10 @@ startMbxBackend({
 
 <br>
 
+An example MoBrix-backend app is running at https://mobrix-backend.onrender.com/ , accept both GET and POST requests. Give a try !
+
+<br>
+
 ---
 
 ## Configuration parameters
