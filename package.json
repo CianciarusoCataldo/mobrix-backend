@@ -69,8 +69,9 @@
     "test": "sh scripts/start-tests.sh",
     "start:playground": "cd playground && npm run start",
     "generate-docs": "sh scripts/setup-docs.sh",
-    "init:playground": "cd playground && npm ci",
+    "init:playground": "npm run build && cd playground && npm ci && npm run build",
     "analyze:playground": "cd playground && npm run analyze",
-    "build:playground": "npm run build && cd playground && npm run build"
+    "build:playground": "npm run build && cd playground && npm run build",
+    "init": "npm i && npm run init:playground"
   }
 }
