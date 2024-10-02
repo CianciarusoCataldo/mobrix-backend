@@ -1,9 +1,10 @@
-name: Deploy MoBrix-backend playground app
+name: Deploy MoBrix-backend Docs app
 
 on: workflow_dispatch
 
 jobs:
-  build-mobrix-backend-playground:
+  build-mobrix-backend-docs-app:
+    name: "Build MoBrix-backend docs app"
     permissions:
       pages: write
       id-token: write
@@ -16,7 +17,8 @@ jobs:
       - uses: actions/setup-python@v3
         with:
           python-version: 3.x
-      - run: | 
+      - name: Build MoBrix-backend docs app
+        run: | 
           pip install -r config/pip-deps.txt
           npm run generate-docs
         env:
@@ -28,7 +30,8 @@ jobs:
         with:
           path: docs-build
   deploy-mobrix-ui-playground:
-    needs: build-mobrix-backend-playground
+    needs: build-mobrix-backend-docs-app
+    name: "Deploy MoBrix-backend docs app"
     permissions:
       pages: write
       id-token: write
@@ -37,7 +40,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy MoBrix-backend docs app
         id: deployment
         uses: actions/deploy-pages@v4
         env:

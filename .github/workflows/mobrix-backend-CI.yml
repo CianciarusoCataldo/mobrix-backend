@@ -9,6 +9,7 @@ on:
 jobs: 
   install-dependencies:
     runs-on: ubuntu-latest
+    name: Install dependencies
     strategy:
       matrix:
         node-version: [16.x, 17.x, 18.x]
@@ -35,6 +36,7 @@ jobs:
   build:
     needs: install-dependencies
     runs-on: ubuntu-latest
+    name: Build
     strategy:
       matrix:
         node-version: [16.x, 17.x, 18.x]
@@ -52,6 +54,7 @@ jobs:
           key: cache-${{ hashFiles('package-lock.json') }}-v${{ matrix.node-version }}
       - run: npm run build
   unit-tests:
+    name: Unit tests
     needs: install-dependencies
     runs-on: ubuntu-latest
     steps:
