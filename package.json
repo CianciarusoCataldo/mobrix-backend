@@ -71,6 +71,6 @@
     "generate-docs": "sh scripts/setup-docs.sh",
     "init:playground": "cd playground && npm ci",
     "analyze:playground": "cd playground && npm run analyze",
-    "build:playground": "cd playground && npm run build"
+    "build:playground": "npm run build && cd playground && npm run build"
   }
 }
