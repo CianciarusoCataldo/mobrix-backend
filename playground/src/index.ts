@@ -12,49 +12,46 @@ const port = process.env.PORT || 3000;
 
 const router = Router();
 
-const timeLog = (req: any, res: any, next: () => void) => {
-  console.log("Time: ", Date.now());
-  next();
-};
-router.use(timeLog);
-
 router.get("/", (req, res) => {
-  res.send("router 1 - Main");
+  res.send(formatText("MoBrix-backend example server - Router - '/'"));
 });
 
-router.get("/router1-r1", (req, res) => {
-  res.send("router 1 - Route 1");
+router.get("/router-route", (req, res) => {
+  res.send(
+    formatText(
+      "MoBrix-backend example server - Router - Example route ('/router-route')"
+    )
+  );
 });
 
-// startMbxBackend({
-//   callback: (app) => {
-//     app.use("/router1", router);
-//   },
-//   port: Number(port),
-//   onListen: () => {
-//     console.log(`[server]: Server is running at http://localhost:${port}`);
-//   },
-//   //routers: [{ path: "/router1", router }],
-//   get: [
-//     {
-//       path: "/",
-//       callback: (req: Request, res: Response) => {
-//         res.send("Express + TypeScript Server");
-//       },
-//     },
-//     {
-//       path: "/r1",
-//       callback: (req: Request, res: Response) => {
-//         res.send("Main path - Route 1");
-//       },
-//     },
-//     {
-//       path: "/r2",
-//       callback: (req: Request, res: Response) => {
-//         res.send("Main path - Route 2");
-//       },
-//     },
-//   ],
-// });
+const formatText = (input: string) =>
+  `<html><body style="font-size:xx-large;display:flex;"><p style="margin:auto">${input}</p></body></html>`;
 
-startMbxBackend()
+const standardElement = (input: string, path: string) => ({
+  path,
+  callback: (req: Request, res: Response) => {
+    res.send(formatText(input));
+  },
+});
+
+startMbxBackend({
+  port: Number(port),
+  routers: [{ path: "/router", router }],
+  get: [
+    standardElement("MoBrix-backend Server", "/"),
+    standardElement("MoBrix-backend Server - Example route", "/route"),
+  ],
+  post: [
+    {
+      path: "/submit",
+      callback: (req: Request, res: Response) => {
+        const { name } = req.body;
+        if (name) {
+          res.status(201).send(`Hello, ${name}`);
+        } else {
+          res.status(400).send("Name is required");
+        }
+      },
+    },
+  ],
+});
