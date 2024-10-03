@@ -9,7 +9,6 @@ export DOCS_CHAPTERS_DIR="$DOCS_TEMPLATES_DIR/chapters"
 
 echo "\n Docs setup \n"
 
-
 mkdir "tmp"
 mkdir "docs"
 cp -r "docs-gen/assets" "docs/assets"
@@ -27,6 +26,7 @@ sed -i "s/# / /g" "tmp/get-started.md"
 
 cat "$DOCS_CHAPTERS_DIR/header.md" >>"$DOCS_INDEX_FILE"
 cat "$DOCS_INDEX_FILE" >>"$DOCS_README_FILE"
+cat "$DOCS_CHAPTERS_DIR/extra-header.md" >>"$DOCS_INDEX_FILE"
 echo "\n" >>"$DOCS_README_FILE"
 cat "$DOCS_CHAPTERS_DIR/summary.md" >>"$DOCS_README_FILE"
 echo "\n" >>"$DOCS_README_FILE"
@@ -50,5 +50,6 @@ npx --yes prettier --log-level silent --write "$DOCS_README_FILE" docs/index.md 
 
 mkdocs build -d docs-build
 
+rm -rf mkdocs.yml
 rm -rf docs
 rm -rf tmp
