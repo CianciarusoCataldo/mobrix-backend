@@ -4,7 +4,7 @@
 
 export DOCS_TEMPLATES_DIR='docs-gen/templates'
 export DOCS_INDEX_FILE='docs/index.md'
-export DOCS_README_FILE='README_TEST.md'
+export DOCS_README_FILE='README.md'
 export DOCS_CHAPTERS_DIR="$DOCS_TEMPLATES_DIR/chapters"
 
 echo "\n Docs setup \n"
@@ -27,7 +27,9 @@ sed -i "s/# / /g" "tmp/get-started.md"
 
 cat "$DOCS_CHAPTERS_DIR/header.md" >>"$DOCS_INDEX_FILE"
 cat "$DOCS_INDEX_FILE" >>"$DOCS_README_FILE"
+echo "\n" >>"$DOCS_README_FILE"
 cat "$DOCS_CHAPTERS_DIR/summary.md" >>"$DOCS_README_FILE"
+echo "\n" >>"$DOCS_README_FILE"
 cat "$DOCS_CHAPTERS_DIR/intro.md" >>"$DOCS_README_FILE"
 cat "$DOCS_CHAPTERS_DIR/intro.md" >>"$DOCS_INDEX_FILE"
 echo "\n" >>"$DOCS_README_FILE"
@@ -44,7 +46,7 @@ cp CHANGELOG.md docs/Changelog.md
 cp LICENSE docs/License.md
 cp config/mkdocs.yml mkdocs.yml
 
-npx --yes prettier --log-level silent --write docs/index.md docs/api/* docs/guide/*
+npx --yes prettier --log-level silent --write "$DOCS_README_FILE" docs/index.md docs/api/* docs/guide/*
 
 mkdocs build -d docs-build
 
