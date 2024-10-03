@@ -68,7 +68,7 @@ npm i mobrix-backend
 ### Usage
 
 Once installed, you can import this library in your project and use it. 
-An example MoBrix-backend app is deployed [herel](https://mobrix-backend.onrender.com) , accept both GET and POST requests. Give a try !
+An example MoBrix-backend app is deployed [here](https://mobrix-backend.onrender.com) , accept both GET and POST requests. Give a try !
 
 <br>
 
