@@ -1,0 +1,21 @@
+site_name: MoBrix-backend documentation
+repo_url: https://github.com/CianciarusoCataldo/mobrix-backend
+site_author: Cataldo Cianciaruso
+copyright: 2024 Cataldo Cianciaruso
+theme:
+  logo: "assets/mobrix-backend_icon.png" 
+  favicon: "assets/mobrix-backend_icon.png" 
+  name: material
+  features:
+   - navigation.instant
+  custom_dir: docs-gen/templates/published
+  palette: 
+    - scheme: default
+      toggle:
+        icon: material/weather-night 
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue grey
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
