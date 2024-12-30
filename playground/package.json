@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "mobrix-backend": "^1.1.0"
   },
   "devDependencies": {
